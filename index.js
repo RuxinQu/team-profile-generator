@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
-const { Manager, Engineer, Intern } = require('./lib/Classes.js')
-const { menu, managerQuestion, internQuestion, engineerQuestion } = require('./src/question.js');
-const generateHTML = require('./src/template-helper.js')
+const { Manager, Engineer, Intern } = require('./lib/Classes')
+const { menu, managerQuestion, internQuestion, engineerQuestion } = require('./src/question');
+const generateHTML = require('./src/template-helper')
 let employeeArr = []
 
 const generateManager = async () => {
@@ -15,7 +15,7 @@ const promptEngineerQuestion = async () => {
     const engineerAnswer = await inquirer.prompt(engineerQuestion);
     const engineer = new Engineer(engineerAnswer.name, engineerAnswer.id, engineerAnswer.email, engineerAnswer.github)
     employeeArr.push(engineer);;
-    return generateEmployee();
+    generateEmployee();
 }
 
 // prompt questions for interns
@@ -23,7 +23,7 @@ const promptInternQuestion = async () => {
     const internAnswer = await inquirer.prompt(internQuestion);
     const intern = new Intern(internAnswer.name, internAnswer.id, internAnswer.email, internAnswer.school)
     employeeArr.push(intern);
-    return generateEmployee();
+    generateEmployee();
 }
 
 //keep prompting menu for choices of adding engineer, interns until finish
