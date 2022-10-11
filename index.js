@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const { Manager, Engineer, Intern } = require('./lib/Classes.js')
-const { managerQuestion, internQuestion, menu, engineerQuestion } = require('./src/question.js');
+const { menu, managerQuestion, internQuestion, engineerQuestion } = require('./src/question.js');
 const generateHTML = require('./src/template-helper.js')
 let employeeArr = []
 

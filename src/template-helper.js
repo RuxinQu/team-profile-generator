@@ -40,7 +40,7 @@ const generateManager = (managerData) => {
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID:${managerData.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto: ${managerData.getEmail()}">${managerData.getEmail()}</a></li>
-                <li class="list-group-item">Office number:${managerData.getOffice()}</li>
+                <li class="list-group-item">Office number:${managerData.getOfficeNumber()}</li>
             </ul>
         </div>
     </div>
