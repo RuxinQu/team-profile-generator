@@ -1,31 +1,34 @@
 const fs = require('fs');
+const util = require('util')
+const writeFile = util.promisify(fs.writeFile);
 
 const generateBodyBefore = () => {
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Team</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <header class="d-flex justify-content-center align-items-center bg-dark text-white">
-        <h1>My team</h1>
-    </header>
-    <div class="container-fluid">
-        <div class="row d-flex justify-content-center">
-`
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Team</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <header class="d-flex justify-content-center align-items-center bg-dark text-white">
+            <h1>My team</h1>
+        </header>
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+    `
 }
 
 const generateBodyAfter = () => {
     return `        
+            </div>
         </div>
-    </div>
     </body>
     </html>`
 }
@@ -48,7 +51,8 @@ const generateManager = (managerData) => {
 }
 
 const generateEngineer = (engineerData) => {
-    return `<div class="col-12 col-md-4 col-lg-3 my-3 mx-1 d-flex justify-content-center align-items-center">
+    return `
+    <div class="col-12 col-md-4 col-lg-3 my-3 mx-1 d-flex justify-content-center align-items-center">
         <div class="card " style="width: 16rem;">
             <div class="card-body bg-primary text-white">
                 <h5 class="card-title">${engineerData.getName()}</h5>
@@ -65,7 +69,8 @@ const generateEngineer = (engineerData) => {
 }
 
 const generateIntern = (internData) => {
-    return `<div class="col-12 col-md-4 col-lg-3 my-3 mx-1 d-flex justify-content-center align-items-center">
+    return `
+    <div class="col-12 col-md-4 col-lg-3 my-3 mx-1 d-flex justify-content-center align-items-center">
         <div class="card " style="width: 16rem;">
             <div class="card-body bg-primary text-white">
                 <h5 class="card-title">${internData.getName()}</h5>
@@ -80,12 +85,12 @@ const generateIntern = (internData) => {
     </div>`
 }
 
-generateHTML = (employeeArr) => {
+generateHTML = async (employeeArr) => {
     let html = generateBodyBefore();
     html += generateManager(employeeArr[0]);
-    
-    for(let x =0; x < employeeArr.length; x++){
-        switch(employeeArr[x].getRole()){
+
+    for (let x = 0; x < employeeArr.length; x++) {
+        switch (employeeArr[x].getRole()) {
             case 'Engineer':
                 html += generateEngineer(employeeArr[x]);
                 break;
@@ -97,7 +102,11 @@ generateHTML = (employeeArr) => {
         }
     }
     html += generateBodyAfter();
-    fs.writeFile("./dist/index.html", html, (err) => err ? console.log(err) : console.log("File successfully generated!"))
+    writeFile("./dist/index.html", html).then(err => err ? console.log(err) : console.log("File successfully generated in the dist folder!"))
+    // or 
+// fs.writeFile("./dist/index.html", html,(err) => err ? console.log(err) : console.log("File successfully generated in the dist folder!"))
 }
 
 module.exports = generateHTML;
+
+

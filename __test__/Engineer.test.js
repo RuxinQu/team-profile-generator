@@ -1,32 +1,32 @@
-const {Engineer} = require('../lib/Classes.js');
+const {Engineer} = require('../lib/Classes');
 
 describe('Engineer class',()=>{
     const engineer = new Engineer('ruxin',2,'ruxinqu@gmail.com','ruxinqu')
     it('returns the name, id, email and github username',()=>{
-        expect(engineer._name).toStrictEqual('ruxin');
-        expect(engineer._id).toStrictEqual(2);
-        expect(engineer._email).toStrictEqual('ruxinqu@gmail.com');
-        expect(engineer._github).toStrictEqual('ruxinqu')
+        expect(engineer._name).toBe('ruxin');
+        expect(engineer._id).toBe(2);
+        expect(engineer._email).toBe('ruxinqu@gmail.com');
+        expect(engineer._github).toBe('ruxinqu')
     })
 
     it('getName() method returns the name',()=>{
-        expect(engineer.getName()).toStrictEqual(engineer._name);
+        expect(engineer.getName()).toBe(engineer._name);
     })
 
     it('getId() method returns the ID',()=>{
-        expect(engineer.getId()).toStrictEqual(engineer._id);
+        expect(engineer.getId()).toBe(engineer._id);
     })
 
     it('getEmail() method returns the email',()=>{
-        expect(engineer.getEmail()).toStrictEqual(engineer._email);
+        expect(engineer.getEmail()).toBe(engineer._email);
     });
 
     it('getGithub() method returns the github username',()=>{
-        expect(engineer.getGithub()).toStrictEqual(engineer._github);
+        expect(engineer.getGithub()).toBe(engineer._github);
     })
 
     it('getRole() returns "Engineer',()=>{
-        expect(engineer.getRole()).toStrictEqual('Engineer');
+        expect(engineer.getRole()).toBe('Engineer');
     })
 
 })

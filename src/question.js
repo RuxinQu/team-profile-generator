@@ -20,6 +20,9 @@ const managerQuestion = [{
     name: "email",
     validate: function (email) {
         // Regex mail check (return true if valid mail)
+        // const pass = email.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/);
+        // if(pass){return true;} 
+        // return 'Must be a valid email'
         return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email) || "Please enter the manager's email!";
     }
 },
@@ -55,6 +58,7 @@ const engineerQuestion = [{
     validate: function (email) {
         // Regex mail check (return true if valid mail)
         return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email) || "Please enter the engineer's email!";
+        
     }
 },
 {
