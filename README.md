@@ -6,12 +6,15 @@
 
 ## Description
 
-This project generates an HTML file of team profile containing information about the manager, engineers and interns after user answers all the prompts that apply. [Inquirer](https://www.npmjs.com/package/inquirer) is used to collect user input.
+This project generates a team website containing information about the manager, engineers and interns after user answers all the prompts that apply. The website is responsive to different screen sizes.
+
+[Inquirer](https://www.npmjs.com/package/inquirer) is used to collect user input. 
 
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
+- [Technologies Used](#technologies-used)
 - [Test](#test)
 - [Question](#question)
 
@@ -35,6 +38,12 @@ View the demo video of this project [**HERE**](https://drive.google.com/file/d/1
 This project is under MIT license
 
 [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
+
+## Technologies Used
+
+- [Bootstrap](https://getbootstrap.com)
+- [Inquirer](https://www.npmjs.com/package/inquirer)
+- [Jest](https://jestjs.io)
 
 ## Test
 
